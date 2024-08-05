@@ -15,32 +15,35 @@ public class PositiveLoginTest extends TestUtilities {
     //    go to welcome page
    @Test
     void positiveLoginTest() {
-       WelcomePage welcomePage = new WelcomePage(driver,log);
+       WelcomePage welcomePage = new WelcomePage(driver, log);
        welcomePage.openPage();
 
-    //accept notification
+       //accept notification
        welcomePage.waitForAndAcceptCookies();
 
        sleep(5);
-    //    go to login-button and click
+       //    go to login-button and click
        LoginBoxPage loginBoxPage = welcomePage.loginFromHeader();
 
-       loginBoxPage.loginWithCredentials("testelek@sharklasers.com","testelek0000$$$$");
+       loginBoxPage.loginWithCredentials("testelek@sharklasers.com", "testelek0000$$$$");
 
        welcomePage.waitForLoginExecution();
 
        sleep(5);
 
 
-
-    //verifications
-    //    logout button visible
+       //verifications
+       //    logout button visible
        String actualText = welcomePage.getTextFromBox();
 
-       Assert.assertEquals(actualText,"Kilépés", "\nActual: " + actualText + "\nExpected: Kilépés");
+       Assert.assertEquals(actualText, "Kilépés", "\nActual: " + actualText + "\nExpected: Kilépés");
+   }
+       @Test
+       void negativeLoginTest() {
+
+       }
 
 
 
 
-    }
 }
